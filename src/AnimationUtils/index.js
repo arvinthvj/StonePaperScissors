@@ -1,18 +1,20 @@
 import "./styles.css";
-import { Suspense, useContext, useState } from "react";
+import { Suspense, useContext, useEffect, useState } from "react";
 import { motion, MotionConfig, useMotionValue } from "framer-motion";
 import { Shapes } from "./Shapes";
 import { transition } from "./settings";
 import useMeasure from "react-use-measure";
 import GameDataContext from "../Store/gameContext";
+import { useHistory } from "react-router-dom";
 
 export default function LandingText() {
-  let {setIsVisibleLandingButton } = useContext(GameDataContext);
+  let {setIsVisibleLandingButton ,isVisibleLandingButton} = useContext(GameDataContext);
   const [ref, bounds] = useMeasure({ scroll: false });
   const [isHover, setIsHover] = useState(false);
   const [isPress, setIsPress] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const history = useHistory();
   const handleLandingClick=()=>{
     setIsVisibleLandingButton(true)
   }
@@ -20,7 +22,13 @@ export default function LandingText() {
     mouseX.set(0);
     mouseY.set(0);
   };
-
+  useEffect(()=>{
+    if(isVisibleLandingButton){
+      setTimeout(() => {
+        history.push('/play');
+      }, 500);
+    }
+  },[isVisibleLandingButton])
   return (
     <MotionConfig transition={transition}>
       <motion.button

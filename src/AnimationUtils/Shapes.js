@@ -3,6 +3,7 @@ import { MotionConfig } from "framer-motion";
 import { useRef, useLayoutEffect } from "react";
 import { transition } from "./settings";
 import { Canvas, useThree } from "@react-three/fiber";
+import { BufferGeometry, BufferAttribute } from "three";
 import { useSmoothTransform } from "./use-smooth-transform";
 
 export function Shapes({ isHover, isPress, mouseX, mouseY }) {
@@ -30,6 +31,7 @@ export function Shapes({ isHover, isPress, mouseX, mouseY }) {
           {/* <Sphere /> */}
           <Cone />
           {/* <Torus /> */}
+          <Scissors/>
           <Icosahedron />
         </motion.group>
       </MotionConfig>
@@ -93,6 +95,51 @@ export function Torus() {
       }}
     >
       <torusGeometry args={[0.2, 0.1, 10, 50]} />
+      <Material />
+    </motion.mesh>
+  );
+}
+export function Scissors() {
+  // Define the vertices for the scissors shape
+  const vertices = [
+    0, 0,
+    0.1, 0,
+    0.25, -0.25,
+    0.15, -0.35,
+    -0.1, 0.25,
+    -0.15, 0.3,
+    0, 0.5,
+    0, 0,
+  ];
+
+  // Define the indices to connect the vertices and form triangles
+  const indices = [
+    0, 1, 2,
+    2, 3, 0,
+    0, 3, 4,
+    4, 5, 0,
+    0, 5, 6,
+    6, 1, 0,
+  ];
+
+  // Create a BufferGeometry with the custom vertices and indices
+  const scissorsGeometry = new BufferGeometry();
+  scissorsGeometry.setAttribute("position", new BufferAttribute(new Float32Array(vertices), 2));
+  scissorsGeometry.setIndex(indices);
+
+  return (
+    <motion.mesh
+      position={[0.6, 0, 0]}
+      rotation={[0, 0, Math.PI / 2]}
+      variants={{
+        hover: {
+          x: 0.8,
+          y: -0.5,
+          rotateZ: -Math.PI / 4,
+        },
+      }}
+    >
+      <bufferGeometry attach="geometry" {...scissorsGeometry} />
       <Material />
     </motion.mesh>
   );

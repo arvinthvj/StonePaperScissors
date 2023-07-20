@@ -4,12 +4,12 @@ import {
   Route
 } from "react-router-dom";
 import LandingPage from "./LandingScreen";
-import Play from "./PlayScreen";
+import Play from "./PlayScreen/Play";
 import "./App.css"
 
 function App() {
   return (
-    <div className="game_app_main">
+    <div>
       <Router>
         <Switch>
           <Route path = "/" exact>

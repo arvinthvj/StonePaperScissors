@@ -28,7 +28,9 @@ export default function LandingText() {
         history.push('/play');
       }, 500);
     }
+    
   },[isVisibleLandingButton])
+ 
   return (
     <MotionConfig transition={transition}>
       <motion.button

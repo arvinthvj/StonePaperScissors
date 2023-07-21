@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Space } from "antd";
 import "./play.css";
 import PopInComponent from "../AnimationUtils/TransitionCustom/Popin";
 import ScoreCard from "./ScoreCard";
@@ -13,6 +13,7 @@ export default function Play() {
   let {selections} = useContext(GameDataContext);
 
   return (
+    <Space wrap>
     <div className="main_play">
       <Row className="score_card_row">
         <SlideUpComponent component={ScoreCard} />
@@ -31,5 +32,6 @@ export default function Play() {
           })}
       </Row>
     </div>
+    </Space>
   );
 }

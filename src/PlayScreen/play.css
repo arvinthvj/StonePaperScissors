@@ -85,12 +85,24 @@
     justify-content: center;
     margin-top: 4%;
     margin-right: 10px;
+    font-family: 'Arimo', sans-serif;
+    cursor: pointer;
 }
-
+.each_selection:hover{
+    background: #9b9b9b;
+    color: white;
+}
+.each_selection.selected{
+    background: #9b9b9b;
+    color: white;
+}
 .play_area_img{
     object-fit: contain;
     max-height: 100%;
     min-height: 82%;
     
     
+}
+.modal_info .ant-modal-content{
+    background-color: #eef4fa85  !important;
 }

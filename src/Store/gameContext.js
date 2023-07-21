@@ -15,8 +15,9 @@ export function GameDataProvider({ children }) {
       [0] : [],
       [1] : [],
     });
+    const [ round, setRound] = useState(1);
     const [expectedSelection, setExpectedSelection] = useState(0);
-    
+    const [wonUser , setWonUser] = useState(0);
 
     useEffect(()=>{
       let selectionData = usersSelection;
@@ -26,11 +27,23 @@ export function GameDataProvider({ children }) {
         }).length
         return acc
       },{});
+      if(selectionData[1].length && selectionData[0].length == selectionData[1].length){
+        if(itemsThatDefeat[selectionData[0][selectionData[0].length-1].item].includes(selectionData[1][selectionData[1].length-1].item) && itemsThatDefeat[selectionData[1][selectionData[1].length-1].item].includes(selectionData[0][selectionData[0].length-1].item)){
+          console.log("Both Won");
+          setWonUser(-1);
+        }else if(itemsThatDefeat[selectionData[1][selectionData[1].length-1].item].includes(selectionData[0][selectionData[0].length-1].item)){
+          console.log("won 1");
+          setWonUser(1);
+        }else{
+          console.log("won 0")
+          setWonUser(0);
+        }
+      }
+      setScore(winData)
       console.log(winData)
-      setScore(winData);
     },[usersSelection])
   return (
-    <GameDataContext.Provider value={{isVisibleLandingButton, setIsVisibleLandingButton, usersSelection , setUsersSelection, selections, itemsThatDefeat, expectedSelection, setExpectedSelection, score}}>
+    <GameDataContext.Provider value={{isVisibleLandingButton, setIsVisibleLandingButton, usersSelection , setUsersSelection, selections, itemsThatDefeat, expectedSelection, setExpectedSelection, score, round, setRound, wonUser}}>
       {children}
     </GameDataContext.Provider>
   );

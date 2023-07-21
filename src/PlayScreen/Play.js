@@ -7,6 +7,7 @@ import "./play.css";
 import SlideUpComponent from "../AnimationUtils/TransitionCustom/SlideUp";
 import User from "./Users";
 import GameDataContext from "../Store/gameContext";
+import Countdown from "../AnimationUtils/CountDown/CountDown";
 export default function Play() {
   
   let {selections} = useContext(GameDataContext);
@@ -17,12 +18,14 @@ export default function Play() {
         <SlideUpComponent component={ScoreCard} />
       </Row>
       <Row className="main_play_container">
-        {Array(2)
+        {Array(3)
           .fill("")
           .map((e, i) => {
             return (
-              <Col>
-                <PopInComponent component={<User selections={selections} index={i}/>} />
+              i==1 ? <Col>
+              <Countdown/>
+              </Col> : <Col>
+              <PopInComponent component={<User selections={selections} index={i==2? 1 :i}/>} />
               </Col>
             );
           })}

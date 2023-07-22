@@ -6,6 +6,7 @@ import {
 import LandingPage from "./LandingScreen";
 import Play from "./PlayScreen/Play";
 import "./App.css"
+import GamerData from "./DataScreen/GamerData";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path = "/play">
             <Play/>
+          </Route>
+          <Route path = "/gameData">
+            <GamerData/>
           </Route>
         </Switch>
       </Router>

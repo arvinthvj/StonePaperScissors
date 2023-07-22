@@ -8,7 +8,7 @@ import GameDataContext from "../Store/gameContext";
 import { useHistory } from "react-router-dom";
 
 export default function LandingText() {
-  let {setIsVisibleLandingButton ,isVisibleLandingButton} = useContext(GameDataContext);
+  let {setIsVisibleLandingButton ,isVisibleLandingButton, isUserModalOpen, setIsUserModalOpen} = useContext(GameDataContext);
   const [ref, bounds] = useMeasure({ scroll: false });
   const [isHover, setIsHover] = useState(false);
   const [isPress, setIsPress] = useState(false);
@@ -24,8 +24,9 @@ export default function LandingText() {
   };
   useEffect(()=>{
     if(isVisibleLandingButton){
+      setIsUserModalOpen(true)
       setTimeout(() => {
-        history.push('/play');
+        // history.push('/play');
       }, 500);
     }
     
@@ -87,6 +88,7 @@ export default function LandingText() {
          Let's Play
         </motion.div>
       </motion.button>
+      
     </MotionConfig>
   );
 }

@@ -6,3 +6,9 @@
   justify-content: center;
   align-items: center;
 }
+
+
+.user_form_button{
+  right: 0;
+  position: absolute;
+}

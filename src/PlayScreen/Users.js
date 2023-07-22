@@ -4,7 +4,7 @@ import GameDataContext from "../Store/gameContext";
 import info from "../Modal";
 
 export default function User({ selections, index }) {
-  let {usersSelection,setUsersSelection, expectedSelection, setExpectedSelection, setRound, round, score} = useContext(GameDataContext);  
+  let {usersSelection,setUsersSelection, expectedSelection, setExpectedSelection, setRound, round, score, userNames } = useContext(GameDataContext);  
   const [imagePath, setImagePath] = useState(Pic);
   const [selectedOption , setSelectedOption] = useState("");
   const handleSelectionChange = (e) => {
@@ -42,7 +42,7 @@ useEffect(()=>{
   return (
     <div>
       <div className="user_username">
-        User {index} : {score[index]}
+        {userNames[index]} : {score[index]}
       </div>
       <div className="user_left user">
       {RenderImage(imagePath)}

@@ -9,7 +9,7 @@ export default function ScoreCard() {
     <div className='score_card_main'>
         <Row >
         <Col span={24} className='playerHeader'>
-        Round: {round}
+        Round: {round >6 ? 6 : round}
         </Col>
         </Row>
     </div>

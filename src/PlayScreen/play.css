@@ -1,6 +1,5 @@
 .main_play{
     flex: 1;
-    
     background: url("../Assets/landingBackground.png");
     background-size: cover;
     display: flex;
@@ -11,6 +10,7 @@
     width: 100vw;
     /* justify-content: space-around; */
 }
+
 .main_play_container{
     display: flex;
     justify-content: space-around;
@@ -105,4 +105,21 @@
 }
 .modal_info .ant-modal-content{
     background-color: #eef4fa85  !important;
+}
+
+.game_data{
+   background: #f3f3f3;
+    height: 18px;
+    width: 113px;
+    display: flex;
+    justify-content: center;
+    border-radius: 14px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.total_play{
+    background: url("../Assets/landingBackground.png");
+    gap: 0 !important;
 }

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import GameDataContext from "../../Store/gameContext";
 import UpwardComponent from "../TransitionCustom/Upwards";
-import Notification from "../TransitionCustom/Notify";
 import PopInComponent from "../TransitionCustom/Popin";
 
 const Countdown = () => {
@@ -36,7 +35,7 @@ const Countdown = () => {
   let Go =()=> "Go";
   return (
     <div style={{ fontSize: "48px", textAlign: "center", marginTop: "100px" }}>
-      {visibleWon && <PopInComponent component={<div>User {wonUser} won</div>}/>}
+      {visibleWon && <PopInComponent component={<div>{wonUser} {wonUser.includes("tie") ? "": "Won !!"}</div>}/>}
       <motion.div
         key={count}
         className="count_div"

@@ -1,6 +1,5 @@
 import {Modal} from 'antd';
-
-const info = (text) => {
+const info = (text, toDo) => {
     Modal.info({
         centered : "true",
         className:"modal_info",
@@ -10,7 +9,12 @@ const info = (text) => {
           {text}
         </div>
       ),
-      onOk() {},
+      onOk() {
+        if(toDo){
+          debugger
+          toDo()
+        }
+      },
     });
   };
 

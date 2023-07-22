@@ -9,6 +9,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.7.1",
+    "firebase": "^10.1.0",
+    "firebase-tools": "^12.4.5",
     "framer-motion": "^10.13.0",
     "framer-motion-3d": "^10.13.0",
     "popmotion": "^11.0.5",

@@ -7,7 +7,7 @@ import { getDocs } from 'firebase/firestore';
 const GameDataContext = createContext();
 
 export function GameDataProvider({ children }) {
-
+    const [count, setCount] = useState(3);
     const selections = ["Scissors", "Paper", "Stone"];
     const itemsThatDefeat = {
       Scissors: ["Paper", "Scissors"],
@@ -103,7 +103,7 @@ export function GameDataProvider({ children }) {
     },[score])
 
   return (
-    <GameDataContext.Provider value={{isVisibleLandingButton, setIsVisibleLandingButton, usersSelection , setUsersSelection, selections, itemsThatDefeat, expectedSelection, setExpectedSelection, score, round, setRound, wonUser, isUserModalOpen, setIsUserModalOpen, postUserDataToFirestore, userNames , setUserNames, canPushToGameData, getUsersData}}>
+    <GameDataContext.Provider value={{isVisibleLandingButton, setIsVisibleLandingButton, usersSelection , setUsersSelection, selections, itemsThatDefeat, expectedSelection, setExpectedSelection, score, round, setRound, wonUser,setWonUser, isUserModalOpen, setIsUserModalOpen, postUserDataToFirestore, userNames , setUserNames, canPushToGameData, getUsersData, count, setCount}}>
       {children}
     </GameDataContext.Provider>
   );

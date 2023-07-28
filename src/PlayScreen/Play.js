@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 export default function Play() {
   let history = useHistory();
-  let {selections, canPushToGameData, userNames, setIsVisibleLandingButton} = useContext(GameDataContext);
+  let {selections, canPushToGameData, userNames, setIsVisibleLandingButton, count} = useContext(GameDataContext);
   useEffect(()=>{
     if(!userNames[0].length && window.location.pathname != "/" ){
       setIsVisibleLandingButton(false)
@@ -32,7 +32,14 @@ export default function Play() {
         <SlideUpComponent component={ScoreCard} />
       </Row>
       <Row className="main_play_container">
-        {Array(3)
+        {count >-1 ? 
+        <Col>
+        <Countdown/>
+        </Col>  
+        : ""}
+        {
+        count == -1 ?
+        Array(3)
           .fill("")
           .map((e, i) => {
             return (
@@ -42,7 +49,7 @@ export default function Play() {
               <PopInComponent component={<User selections={selections} index={i==2? 1 :i}/>} />
               </Col>
             );
-          })}
+          }) : ""}
       </Row>
     </div>
     </Space>

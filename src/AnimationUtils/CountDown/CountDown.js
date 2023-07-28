@@ -5,22 +5,26 @@ import UpwardComponent from "../TransitionCustom/Upwards";
 import PopInComponent from "../TransitionCustom/Popin";
 
 const Countdown = () => {
-  const [count, setCount] = useState(3);
-  let { wonUser, setIsVisibleLandingButton, round} = useContext(GameDataContext);
+  
+  let { wonUser, setIsVisibleLandingButton,round,count,setCount} = useContext(GameDataContext);
   const [visibleWon, setVisibleWon] = useState(false);
   useEffect(() => {
-    if (count > 0) {
+    if (count > -1) {
       const timer = setInterval(() => {
+        
         setCount((prevCount) => prevCount - 1);
       }, 1000);
       return () => clearInterval(timer);
+      
     }
-    if(count == 0){
+    if(count == -1){
       setIsVisibleLandingButton(true)
     }
   }, [count]);
   useEffect(()=>{
+    
     if(round>1){
+      
       setVisibleWon(true);
       setTimeout(()=>{
         setVisibleWon(false);
@@ -34,6 +38,7 @@ const Countdown = () => {
   };
   let Go =()=> "Go";
   return (
+
     <div style={{ fontSize: "48px", textAlign: "center", marginTop: "100px" }}>
       {visibleWon && <PopInComponent component={<div>{wonUser} {wonUser.includes("tie") ? "": "Won !!"}</div>}/>}
       <motion.div
@@ -45,7 +50,8 @@ const Countdown = () => {
         transition={{ duration: 0.5 }}
         variants={animationVariants}
       >
-        {count === 0 ? <UpwardComponent component={Go}></UpwardComponent>  : count}
+        {count <= 0 ? <UpwardComponent component={Go}></UpwardComponent>  : count}
+       
       </motion.div>
     </div>
   );
